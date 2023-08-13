@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="site-header__wrapper"></div>
+      </div>
+    </header>
+    <section class="hero poke">
+      <div class="container">
+        <div class="hero__wrapper">
+          <form class="hero__form">
+            <input
+              class="hero__search hero__input-search"
+              type="search"
+              placeholder="Search cartoon.."
+              aria-label="Search cartoon.."
+            />
+            <select
+              class="hero__search hero__select"
+              name="name"
+              aria-label="select"
+            >
+              <option value="All">All</option>
+              <option value="Fire">Fire</option>
+              <option value="Ice">Ice</option>
+              <option value="Flying">Flying</option>
+              <option value="Psychic">Psychic</option>
+              <option value="Water">Water</option>
+              <option value="Ground">Ground</option>
+            </select>
+            <select
+              class="hero__search hero__select-name"
+              name="poke-name"
+              aria-label="poke name"
+            >
+              <option value="A-Z">A-Z</option>
+              <option value="Z-A">Z-A</option>
+            </select>
+            <button class="hero__button" type="button">Send</button>
+          </form>
+          <ul class="hero__list hero-list__js"></ul>
+        </div>
+      </div>
+    </section>
+    <script src="./js/pokemon.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
