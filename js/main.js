@@ -2,10 +2,6 @@ var elForm = document.querySelector(".hero__form");
 var elInput = document.querySelector(".hero__input-search");
 var elPokeList = document.querySelector(".hero-list__js");
 var elSelect = document.querySelector(".hero__search-select");
-
-
-
-
 function pokemonArr(pokeAree) {
     elPokeList.innerHTML = null;
     for (const poke of pokeAree) {
@@ -44,56 +40,37 @@ function pokemonArr(pokeAree) {
 pokemonArr(pokemons);
 
 var pokeArr = ["All",];
-
 pokemons.forEach(element => {
     element.weaknesses.forEach(function (week) {
         if (!week == pokeArr.includes(week)) {
             pokeArr.push(week);
-        }
+        };
     });
 });
 
-
-for (const pokeSelect of pokeArr) {
+pokeArr.forEach(pokeSelect => {
     var pokeOption = document.createElement("option");
     pokeOption.textContent = pokeSelect;
     pokeOption.value = pokeSelect;
-
-    console.log(pokeOption);
-    elSelect.appendChild(pokeOption)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+    elSelect.appendChild(pokeOption);
+});
 
 elForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
     var inputVal = elInput.value.trim();
+    var selectVal = elSelect.value;
     var newRegex = new RegExp(inputVal, "gi");
-
 
     var resArr = pokemons.filter(item => {
         // return item.name.includes(inputVal);
-        return item.name.match(newRegex)
+        return item.name.match(newRegex) && (item.weaknesses.includes(selectVal) || selectVal == "All");
     });
 
     if (resArr.length > 0) {
         pokemonArr(resArr);
+        elPokeList.classList.remove("error")
     } else {
-        elPokeList.textContent = "Bu ma'lumot bizda yo'q!";
-    }
-
-})
-
-
-
+        elPokeList.textContent = "Bu ma'lumot topilmadi!";
+        elPokeList.classList.add("error")
+    };
+});
