@@ -2,6 +2,8 @@ var elForm = document.querySelector(".hero__form");
 var elInput = document.querySelector(".hero__input-search");
 var elPokeList = document.querySelector(".hero-list__js");
 var elSelect = document.querySelector(".hero__search-select");
+
+var pokeFragment = document.createDocumentFragment()
 function pokemonArr(pokeAree) {
     elPokeList.innerHTML = null;
     for (const poke of pokeAree) {
@@ -33,9 +35,10 @@ function pokemonArr(pokeAree) {
         // finished adding data
         // merge element start
         pokeItem.append(pokeId, pokeTitle, pokeImg, pokeWeight, pokeTime, pokeText);
-        elPokeList.append(pokeItem)
+        pokeFragment.appendChild(pokeItem)
         // merge element finish
     };
+    elPokeList.append(pokeFragment)
 };
 pokemonArr(pokemons);
 
